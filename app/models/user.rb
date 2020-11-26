@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  validates :email, :nickname, presence: true
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
   validates :uid, presence: true, uniqueness: true, if: :omniauth?
-  validates :password, presence: true, uniqueness: true, unless: :omniauth?
 
   has_secure_password
 
