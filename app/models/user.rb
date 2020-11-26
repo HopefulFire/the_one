@@ -5,13 +5,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  private
-
   def omniauth?
-    if uid
-      true
-    else
-      false
-    end
+    !!uid
   end
 end
