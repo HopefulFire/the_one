@@ -1,1 +1,13 @@
-<%# Put user profile here %>
+<h1><%= @user.name %></h1>
+<% if @user.profile %>
+	<p><%= @user.profile.bio %></p>
+	<ul>
+		<li>
+			<%= "Likes:\n #{@user.profile.likes}" %>
+		</li>
+		<li>
+			<%= "Dislikes:\n #{@user.profile.dislikes}" %>
+		</li>
+	</ul>
+	<p><%= "#{@user.profile.gender} looking for #{@user.profile.sex_pref}" %></p>
+<% end %>
