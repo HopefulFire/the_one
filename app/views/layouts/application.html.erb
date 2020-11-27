@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <nav>
+      <% if logged_in? %>
+        <%= form_with url: '/sessions/delete', method: 'DELETE' do |logout| %>
+          <%= logout.label session_user %>
+          <%= logout.submit 'Logout' %>
+        <% end %>
+      <% else %>
+        <%= form_with url: '/sessions/new', method: 'GET' do |login| %>
+          <%= login.submit 'Login' %>
+        <% end %>
+        <%= form_with url: '/users/new', method: 'GET' do |signup| %>
+          <%= signup.submit 'Signup' %>
+        <% end %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
