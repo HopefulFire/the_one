@@ -1,6 +1,6 @@
-<%= form_with url: '/sessions/create', method: 'POST' do |login| %>
-	<%= login.label :name %>
-	<%= login.text_field :name %>
+<%= form_with url: sessions_path, method: 'POST' do |login| %>
+	<%= login.label :email %>
+	<%= login.text_field :email %>
 
 	<%= login.label :password %>
 	<%= login.password_field :password %>

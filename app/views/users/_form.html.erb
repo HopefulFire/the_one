@@ -9,8 +9,8 @@
 		<%= user.label :password %>
 		<%= user.password_field :password %>
 
-		<%= user.label :confirmed_password, 'Please confirm password' %>
-		<%= user.password_field :confirmed_password %>
+		<%= user.label :password_confirmation, 'Please confirm password' %>
+		<%= user.password_field :password_confirmation %>
 	<% else %>
 		<p><%= "Github UID: #{user.object.uid}" %></p>
 	<% end %>

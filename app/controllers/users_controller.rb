@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :uid)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :uid)
   end
 
   def find_user
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   end
 
   def password_confirmed?
-    params[:password] && params[:password] == params[:confirmed_password]
+    params[:password] && params[:password] == params[:password_confirmation]
   end
 end
