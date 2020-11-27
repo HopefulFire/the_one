@@ -5,9 +5,11 @@
 	<%= user.label :email %>
 	<%= user.email_field :email %>
 
-	<%= user.label :password %>
-	<%= user.password_field :password %>
+	<% unless user.object.uid %>
+		<%= user.label :password %>
+		<%= user.password_field :password %>
 
-	<%= user.label :confirmed_password, 'Please confirm password' %>
-	<%= user.password_field :confirmed_password %>
+		<%= user.label :confirmed_password, 'Please confirm password' %>
+		<%= user.password_field :confirmed_password %>
+	<% end %>
 <% end %>
