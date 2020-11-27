@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_203437) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid"], name: "index_users_on_uid", unique: true
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end
