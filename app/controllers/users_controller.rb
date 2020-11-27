@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def update
     return redirect_to 'edit' unless password_confirmed? && @user.update(user_params)
+
     redirect_to user_path(@user)
   end
 
@@ -41,6 +42,6 @@ class UsersController < ApplicationController
   end
 
   def password_confirmed?
-    params[:password] == params[:confirmed_password]
+    params[:password] && params[:password] == params[:confirmed_password]
   end
 end
