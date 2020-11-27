@@ -11,5 +11,7 @@
 
 		<%= user.label :confirmed_password, 'Please confirm password' %>
 		<%= user.password_field :confirmed_password %>
+	<% else %>
+		<p><%= "Github UID: #{user.object.uid}" %></p>
 	<% end %>
 <% end %>
