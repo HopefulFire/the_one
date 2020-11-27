@@ -1,1 +1,11 @@
-<%= form_with url: '/sessions/%>
+<%= form_with url: '/sessions/create', method: 'POST' do |login| %>
+	<%= login.label :name %>
+	<%= login.text_field :name %>
+
+	<%= login.label :password %>
+	<%= login.password_field :password %>
+
+	<%= login.submit %>
+<% end %>
+<br>
+<p><%= link_to 'Or login with GitHub, you nerd!', new_session_path %></p>
