@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    return render 'new' unless password_confirmed? && @user.save
+    return render 'new' unless @user.save
 
     session[:id] = @user.id
     redirect_to user_path(@user)
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    return redirect_to 'edit' unless password_confirmed? && @user.update(user_params)
+    return redirect_to 'edit' unless @user.update(user_params)
 
     redirect_to user_path(@user)
   end
@@ -39,9 +39,5 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by(id: params[:id])
-  end
-
-  def password_confirmed?
-    params[:password] && params[:password] == params[:password_confirmation]
   end
 end
