@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
   before_action :find_user_and_exit_unless_match
-  before_action :find_profile_and_exit_unless_match, only: %i[edit update]
 
   def new; end
 
@@ -26,14 +25,9 @@ class ProfilesController < ApplicationController
     )
   end
 
-  def find_profile_and_exit_unless_match
-    @profile = Profile.find_by(id: params[:id])
-    send_home unless @user.profile == @profile
-  end
-
   def find_user_and_exit_unless_match
-    @user = User.find_by(id: session[:id])
-    redirect_to '/' unless @user&.id == params[:user_id].to_i
+    @user = User.find_by(id: params[:user_id])
+    redirect_to '/' unless @user&.id == session[:id].to_i
   end
 
   def send_home
