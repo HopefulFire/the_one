@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
-  
-  resources :profiles, only: %i[new create edit update]
+  resources :users do
+    resources :profiles, only: %i[new create edit update]
+  end
 
   resources :sessions, only: %i[new create]
   delete '/sessions/delete', to: 'sessions#destroy', as: 'delete_session'
