@@ -26,8 +26,9 @@ class ProfilesController < ApplicationController
   end
 
   def find_user_and_exit_unless_match
-    @user = User.find_by(id: params[:user_id])
-    redirect_to '/' unless @user&.id == session[:id].to_i
+    return redirect_to '/' unless params[:user_id] == session[:id]
+
+    @user = User.find_by(id: session[:id])
   end
 
   def send_home
