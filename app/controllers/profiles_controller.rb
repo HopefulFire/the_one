@@ -1,17 +1,12 @@
 class ProfilesController < ApplicationController
-  before_action :find_user
-  before_action :exit_unless_logged_in
-  before_action :find_profile, only: %i[edit update]
+  before_action :find_user_and_exit_unless_match
+  before_action :find_profile_and_exit_unless_match, only: %i[edit update]
 
-  def new
-    @profile = Profile.new(user_id: params[:user_id])
-  end
+  def new; end
 
   def create
-    @profile = Profile.new(profile_params)
-    return send_home unless @user == @profile.user
-
-    return render 'new' unless @profile.save
+    byebug
+    return render 'new' unless @user.update(profile_params)
 
     send_home
   end
@@ -19,9 +14,7 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    return send_home unless @user == @profile.user
-
-    return render 'edit' unless @profile.update(profile_params)
+    return render 'edit' unless @user.update(profile_params)
 
     send_home
   end
@@ -29,19 +22,19 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:user_id, :bio, :likes, :dislikes, :gender, :sex_pref)
+    params.require(:user).permit(
+      profile_attributes: %i[bio likes dislikes gender sex_pref]
+    )
   end
 
-  def find_profile
+  def find_profile_and_exit_unless_match
     @profile = Profile.find_by(id: params[:id])
+    send_home unless @user.profile == @profile
   end
 
-  def find_user
-    @user = User.find_by(id: params[:id])
-  end
-
-  def exit_unless_logged_in
-    redirect_to '/' unless @user
+  def find_user_and_exit_unless_match
+    @user = User.find_by(id: session[:id])
+    redirect_to '/' unless @user&.id == params[:user_id].to_i
   end
 
   def send_home

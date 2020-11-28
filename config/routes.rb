@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users do
-    resources :profiles, only: %i[new create edit update]
+    resources :profiles, only: %i[new edit]
+    post '/profile', to: 'profiles#create'
+    patch '/profile', to: 'profiles#update'
   end
 
   resources :sessions, only: %i[new create]

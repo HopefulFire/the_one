@@ -1,20 +1,19 @@
-<%= form_with profile do |profile| %>
-	<%= profile.hidden :user_id %>
+<%= form_with model: user, url: user_profile_path(user) do |user| %>
+	<%= user.fields_for :profile_attributes do |profile| %>
+		<%= profile.label :bio %>
+		<%= profile.text_area :bio %>
 
-	<%= profile.label :bio %>
-	<%= profile.text_area :bio %>
+		<%= profile.label :likes %>
+		<%= profile.text_area :likes %>
 
-	<%= profile.label :likes %>
-	<%= profile.text_area :likes %>
+		<%= profile.label :dislikes %>
+		<%= profile.text_area :dislikes %>
 
-	<%= profile.label :dislikes %>
-	<%= profile.text_area :dislikes %>
+		<%= profile.label :gender %>
+		<%= profile.text_field :gender %>
 
-	<%= profile.label :gender %>
-	<%= profile.text_field :gender %>
-
-	<%= profile.label :sex_pref, 'What is your sexual preference' %>
-	<%= profile.text_field :sex_pref %>
-
-	<%= profile.submit 'Submit Public Profile' %>
+		<%= profile.label :sex_pref, 'What is your sexual preference' %>
+		<%= profile.text_field :sex_pref %>
+	<% end %>
+	<%= user.submit 'Submit Public Profile' %>
 <% end %>
