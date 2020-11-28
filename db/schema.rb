@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_225446) do
+ActiveRecord::Schema.define(version: 2020_11_28_015557) do
 
   create_table "profiles", force: :cascade do |t|
     t.text "bio"
     t.text "likes"
     t.text "dislikes"
-    t.boolean "is_male"
+    t.string "gender"
     t.string "sex_pref"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
