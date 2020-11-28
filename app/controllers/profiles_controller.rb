@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
   def new; end
 
   def create
-    byebug
     return render 'new' unless @user.update(profile_params)
 
     send_home
