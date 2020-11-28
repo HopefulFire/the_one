@@ -1,5 +1,5 @@
 <%= form_with model: user, url: user_profile_path(user) do |user| %>
-	<%= user.fields_for :profile_attributes do |profile| %>
+	<%= user.fields_for :profile_attributes, user.object.profile do |profile| %>
 		<%= profile.label :bio %>
 		<%= profile.text_area :bio %>
 
