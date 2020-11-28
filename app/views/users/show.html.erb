@@ -10,4 +10,9 @@
 		</li>
 	</ul>
 	<p><%= "#{@user.profile.gender} looking for #{@user.profile.sex_pref}" %></p>
+	<% if @user == session_user %>
+		<%= link_to 'Edit Profile', edit_user_profile_path %>
+	<% end %>
+<% elsif @user == session_user %>
+	<%= link_to 'Create Profile', new_user_profile_path %>
 <% end %>
