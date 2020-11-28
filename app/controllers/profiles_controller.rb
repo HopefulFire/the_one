@@ -9,21 +9,21 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    return redirect_to user_path(@user) unless @user == @profile.user
+    return send_home unless @user == @profile.user
 
     return render 'new' unless @profile.save
 
-    redirect_to user_path(@user)
+    send_home
   end
 
   def edit; end
 
   def update
-    return redirect_to user_path(@user) unless @user == @profile.user
+    return send_home unless @user == @profile.user
 
     return render 'edit' unless @profile.update(profile_params)
 
-    redirect_to user_path(@user)
+    send_home
   end
 
   private
@@ -42,5 +42,9 @@ class ProfilesController < ApplicationController
 
   def exit_unless_logged_in
     redirect_to '/' unless @user
+  end
+
+  def send_home
+    redirect_to user_path(@user)
   end
 end
