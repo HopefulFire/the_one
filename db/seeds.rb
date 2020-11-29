@@ -9,8 +9,8 @@ User.destroy_all
 User.create(
   [
     {
-      name: 'JohnDoe',
-      email: 'johndoe@gmail.com',
+      name: 'JaneDoe',
+      email: 'janedoe@gmail.com',
       password: 'somethingsecure123',
       profile_attributes:
       {
