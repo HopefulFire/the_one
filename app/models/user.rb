@@ -6,7 +6,11 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one :profile
-  accepts_nested_attributes_for :profile
+
+  def profile_attributes=(profile_attributes)
+    self.profile = Profile.new if profile.nil?
+    profile.update(profile_attributes)
+  end
 
   def omniauth?
     !!uid
