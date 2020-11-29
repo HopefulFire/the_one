@@ -1,11 +1,13 @@
 class User < ApplicationRecord
-  validates :email, :name, presence: true
-  validates :email, uniqueness: true
-  validates :uid, presence: true, uniqueness: true, if: :omniauth?
+  has_one :profile
+  has_many :matches
+  has_many :requests
 
   has_secure_password
 
-  has_one :profile
+  validates :email, :name, presence: true
+  validates :email, uniqueness: true
+  validates :uid, presence: true, uniqueness: true, if: :omniauth?
 
   def profile_attributes=(profile_attributes)
     self.profile = Profile.new if profile.nil?
