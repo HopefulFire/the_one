@@ -1,4 +1,5 @@
 class Match < ApplicationRecord
+  has_many :messages
   has_one :request
   belongs_to :user
 
