@@ -11,6 +11,11 @@
 
   <body>
     <nav>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'About', pages_about_path %>
+      <%= link_to 'Contact', pages_contact_path %>
+      <%= link_to 'Terms', pages_terms_path %>
+      <%= link_to 'Privacy', pages_privacy_path %>
       <% if logged_in? %>
         <%= link_to "#{session_user.name} - Log Out", delete_session_path, method: 'DELETE' %>
       <% else %>

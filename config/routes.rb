@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'pages#home'
+  get 'pages/about'
+  get 'pages/contact'
+  get 'pages/terms'
+  get 'pages/privacy'
+
   resources :users do
     get '/profile/new', to: 'profiles#new'
     post '/profile', to: 'profiles#create'
