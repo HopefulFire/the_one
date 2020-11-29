@@ -11,7 +11,15 @@ User.create(
     {
       name: 'JohnDoe',
       email: 'johndoe@gmail.com',
-      password: 'somethingsecure123'
+      password: 'somethingsecure123',
+      profile_attributes:
+      {
+        bio: 'A fitness trainer',
+        likes: 'Scuba diving, rock climbing, sports',
+        dislikes: 'Negative attitudes',
+        gender: 'Female',
+        sex_pref: 'Male'
+      }
     },
     {
       name: 'Admin',
