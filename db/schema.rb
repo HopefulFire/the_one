@@ -30,6 +30,4 @@ ActiveRecord::Schema.define(version: 2020_11_30_034451) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
-  add_foreign_key "messages", "reciever"
-  add_foreign_key "messages", "sender"
 end
