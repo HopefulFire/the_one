@@ -9,6 +9,6 @@ User.destroy_all
 Message.destroy_all
 
 sender = User.create(nickname: 'Sender')
-reciever = User.create(nickname: 'Reciever')
+receiver = User.create(nickname: 'Receiver')
 
-Message.create(body: 'Hello', sender: sender, reciever: reciever)
+Message.create(body: 'Hello', sender: sender, receiver: receiver)
