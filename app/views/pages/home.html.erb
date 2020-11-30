@@ -1,6 +1,0 @@
-<% if logged_in? %>
-	<p><%= link_to 'Your Profile', user_path(session_user) %></p>
-<% else %>
-	<p>Log in to mingle!</p>
-<% end %>
-<p><%= link_to 'Browse our selection of eligible people!', users_path %></p>
