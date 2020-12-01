@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
+  before_action :check_authorization, only: %i[edit update destroy]
 
   def show; end
 
@@ -43,5 +44,9 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by(id: params[:id])
+  end
+
+  def check_authorization
+    redirect_to root_path unless @user.id == session[:id]
   end
 end
