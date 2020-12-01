@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[show edit update]
+  before_action :find_user, only: %i[show edit update destroy]
 
   def show; end
 
@@ -12,10 +12,22 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new(user_params)
+    return render 'new' unless @user.save
 
+    redirect_to user_path(@user)
   end
 
   def edit; end
+
+  def update
+    return render 'edit' unless @user.update(user_params)
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path
+  end
 
   private
 
