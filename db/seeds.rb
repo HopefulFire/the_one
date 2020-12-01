@@ -8,7 +8,9 @@
 User.destroy_all
 Message.destroy_all
 
-sender = User.create(nickname: 'Sender')
-receiver = User.create(nickname: 'Receiver')
+password = "bollocks"
+
+sender = User.create(nickname: 'Sender', email: 'sender@gmail.com', password: password)
+receiver = User.create(nickname: 'Receiver', email: 'reciever@gmail.com', password: password)
 
 Message.create(body: 'Hello', sender: sender, receiver: receiver)
