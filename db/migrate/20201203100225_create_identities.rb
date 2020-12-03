@@ -7,6 +7,7 @@ class CreateIdentities < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :provider
       t.string :uid
+      t.string :password_digest
 
       t.timestamps
     end

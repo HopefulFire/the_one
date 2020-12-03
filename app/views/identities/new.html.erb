@@ -1,0 +1,39 @@
+<h1>New Account</h1>
+
+<%= form_with url: '/auth/identity/register' do |user| %>
+  <% if @identity&.errors&.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <ul>
+        <% @identity.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= user.hidden_field :provider, value: 'identity' %>
+
+  <%= user.hidden_field :uid, value: SecureRandom.hex %>
+
+  <%= user.label :nickname %>
+  <%= user.text_field :nickname %>
+
+  <%= user.label :firstname, 'First Name' %>
+  <%= user.text_field :firstname %>
+
+  <%= user.label :lastname, 'Last Name' %>
+  <%= user.text_field :lastname %>
+
+  <%= user.label :email %>
+  <%= user.email_field :email %>
+
+  <%= user.label :password %>
+  <%= user.password_field :password %>
+
+  <%= user.label :password_confirmation, 'Confirm Password' %>
+  <%= user.password_field :password_confirmation %>
+
+  <%= user.submit 'Create Account' %>
+
+<% end %>

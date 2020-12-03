@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_100225) do
     t.string "email"
     t.string "provider"
     t.string "uid"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["uid"], name: "index_identities_on_uid", unique: true
@@ -33,7 +34,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_100225) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid"], name: "index_users_on_uid", unique: true
+    t.index ["provider"], name: "index_users_on_provider"
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end

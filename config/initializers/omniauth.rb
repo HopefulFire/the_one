@@ -4,5 +4,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.google[:client_secret]
 
   provider :identity,
-    fields: %i[email ]
+    on_failed_registration: lambda { |env|
+      IdentitiesController.action(:new).call(env)
+    }
 end

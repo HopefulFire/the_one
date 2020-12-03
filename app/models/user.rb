@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :nickname, :provider, :email, :uid, presence: true
-  validates :email, :uid, uniqueness: true
+  validates :email, uniqueness: true
 
   def provider_english
     case provider
