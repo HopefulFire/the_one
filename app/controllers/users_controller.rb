@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   def show; end
 
   def index
-    @users = User.order(asc: :nickname)
+    @users = User.order(nickname: :asc)
   end
 
-  def edit
+  def edit; end
+
+  def update; end
 
   private
 

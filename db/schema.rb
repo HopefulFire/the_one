@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_041911) do
+ActiveRecord::Schema.define(version: 2020_12_03_100225) do
+
+  create_table "identities", force: :cascade do |t|
+    t.string "nickname"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uid"], name: "index_identities_on_uid", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "nickname"

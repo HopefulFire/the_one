@@ -5,15 +5,19 @@ class SessionsController < ApplicationController
     provider = authorize_params['provider']
     uid = authorize_params['uid']
     info = authorize_params['info']
-    User.find_or_create_by(uid: uid, provider: provider) do |user|
+    user = User.find_or_create_by(uid: uid, provider: provider) do |user|
       user.email = info['email']
       case provider
       when 'google_oauth2'
         user.nickname = info['nickname']
         user.firstname = info['first_name']
         user.lastname = info['last_name']
+        user.nickname = "#{user.firstname} #{user.lastname}" unless user.nickname
       end
     end
+    redirect_to "/auth/#{provider}" unless user.valid?
+    session[:id] = user.id
+    redirect_to root_path
   end
 
   def destroy
