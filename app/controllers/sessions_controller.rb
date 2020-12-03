@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    byebug
     provider = authorize_params['provider']
     uid = authorize_params['uid']
     info = authorize_params['info']
