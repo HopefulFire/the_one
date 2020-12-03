@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_100225) do
+ActiveRecord::Schema.define(version: 2020_12_03_174552) do
 
   create_table "identities", force: :cascade do |t|
     t.string "nickname"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2020_12_03_100225) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["uid"], name: "index_identities_on_uid", unique: true
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "sender_id"
+    t.integer "receiver"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver"], name: "index_messages_on_receiver"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
