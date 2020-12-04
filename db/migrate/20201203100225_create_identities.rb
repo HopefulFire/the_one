@@ -1,7 +1,7 @@
 class CreateIdentities < ActiveRecord::Migration[6.0]
   def change
     create_table :identities do |t|
-      t.string :nickname
+      t.string :name
       t.string :firstname
       t.string :lastname
       t.string :email
