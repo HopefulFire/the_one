@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_174552) do
+ActiveRecord::Schema.define(version: 2020_12_04_001245) do
 
-  create_table "identities", force: :cascade do |t|
-    t.string "nickname"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.string "provider"
-    t.string "uid"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["uid"], name: "index_identities_on_uid", unique: true
-  end
+# Could not dump table "identities" because of following StandardError
+#   Unknown type 'name' for column 'nickname'
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
@@ -35,17 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_174552) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "nickname"
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.string "provider"
-    t.string "uid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider"], name: "index_users_on_provider"
-    t.index ["uid"], name: "index_users_on_uid"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'name' for column 'nickname'
 
 end

@@ -1,6 +1,6 @@
 <nav>
 	<% if logged_in? %>
-		<%= link_to "#{current_user&.nickname} - Logout", logout_path, method: :delete %>
+		<%= link_to "#{current_user&.name} - Logout", logout_path, method: :delete %>
 	<% else %>
 		<%= link_to 'Login', login_path %>
 	<% end %>

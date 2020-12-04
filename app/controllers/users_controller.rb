@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show; end
 
   def index
-    @users = User.order(nickname: :asc)
+    @users = User.order(name: :asc)
   end
 
   def edit; end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by(uid: uid, provider: provider) do |user|
       case provider
       when 'google_oauth2'
-        user.nickname = info['name']
+        user.name = info['name']
         user.firstname = info['first_name']
         user.lastname = info['last_name']
         user.email = info['email']
