@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user.uid = SecureRandom.hex
     return render 'new' unless @user.save
 
+    session[:id] = @user.id
     redirect_to user_path(@user)
   end
 
