@@ -1,3 +1,8 @@
+<h1>Use a third party authenticator:</h1>
+<nav>
+	<%= link_to 'Github', '/auth/github' %>
+</nav>
+<h2>Or sign in below:</h2>
 <%= form_with url: sessions_path do |login| %>
 	<%= login.label :email %>
 	<%= login.email_field :email %>
