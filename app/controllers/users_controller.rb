@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: %i[show edit update destroy]
+  before_action :confirm_user, only: %i[show edit update destroy]
 
   def index
     @users = User.all
@@ -12,14 +14,33 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.provider = 'None'
+    @user.provider = 'none'
     @user.uid = SecureRandom.hex
-    render 'new' unless @user.save
+    return render 'new' unless @user.save
+
+    redirect_to user_path(@user)
+  end
+
+  def edit; end
+
+  def update
+    return render 'edit' unless @user.update(user_params)
+
+    @user.update(uid: SecureRandom.hex, provider: 'none') unless @user.provider == 'none'
+    redirect_to user_path(@user)
   end
 
   private
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find_by(params[:id])
+  end
+
+  def confirm_user
+    redirect_to root_path unless @user&.id == session[:id]
   end
 end
