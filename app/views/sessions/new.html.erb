@@ -4,6 +4,8 @@
 </nav>
 <h2>Or sign in below:</h2>
 <%= form_with url: sessions_path do |login| %>
+	<%= login.hidden_field :provider, value: 'none' %>
+
 	<%= login.label :email %>
 	<%= login.email_field :email %>
 

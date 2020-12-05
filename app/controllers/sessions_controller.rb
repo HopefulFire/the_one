@@ -5,12 +5,18 @@ class SessionsController < ApplicationController
     if params[:provider] == 'none'
       @user = User.find_by(email: params[:email])
       return render 'new' unless @user&.authenticate(params[:password])
+
+    else
+      @user = User.find_or_create_by_auth_hash(auth_hash)
     end
-    @user = User.find_or_create_by_auth_hash(auth_hash)
+    session[:id] = @user.id
+    return redirect_to user_path(@user) if @user
+
+    redirect_to root_path
   end
 
   def destroy
-    session[:id].delete
+    session.clear
     redirect_to root_path
   end
 
