@@ -3,5 +3,9 @@ class SessionsController < ApplicationController
 
   def create; end
 
-  def destroy; end
+  def destroy
+    session[:id].delete
+
+    redirect_to root_path
+  end
 end
