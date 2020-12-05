@@ -1,0 +1,10 @@
+<%= form_with model: user do |user| %>
+	<%= user.label :email %>
+	<%= user.email_field :email %>
+	<br>
+	<%= user.label :password %>
+	<%= user.password_field :password %>
+	<br>
+	<%= user.label :password_confirmation 'Please confirm new password:' %>
+	<%= user.password_field :password_confirmation %>
+<% end %>
