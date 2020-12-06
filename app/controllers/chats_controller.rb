@@ -5,6 +5,9 @@ class ChatsController < ApplicationController
     @chat_users = (@user.sent_users + @user.received_users).uniq
   end
 
+  def show
+    @chat_user = User.find_by(id: params[:id])
+
   private
 
   def verify_session_and_find_user
