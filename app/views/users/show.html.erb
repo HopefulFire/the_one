@@ -1,4 +1,17 @@
-<h1><%= @user.email %></h1>
-<p><%= "Provider: #{@user.provider}" %></p>
-<p><%= "UID: #{@user.uid}" %></p>
-<%= link_to 'Edit User Credentials', edit_user_path %>
+<% if logged_in? && current_user == @user %>
+	<h1><%= @user.email %></h1>
+	<p><%= "Provider: #{@user.provider}" %></p>
+	<p><%= "UID: #{@user.uid}" %></p>
+	<%= link_to 'Edit User Credentials', edit_user_path %>
+	<%= link_to 'Edit User Profile', user_profile_edit_path(current_user) %>
+<% end %>
+<% if @user.profile %>
+	<h2><%= "Nickname: #{@user.profile.nickname}" %></h2>
+	<p><%= "First Name: #{unknown_if_nil(@user.profile.first_name)}" %></p>
+	<p><%= "Middle Name: #{unknown_if_nil(@user.profile.middle_name)}" %></p>
+	<p><%= "Last Name: #{unknown_if_nil(@user.profile.last_name)}" %></p>
+	<p><%= "Bio: #{unknown_if_nil(@user.profile.bio)}" %></p>
+	<p><%= "Likes: #{unknown_if_nil(@user.profile.likes)}" %></p>
+	<p><%= "Dislikes: #{unknown_if_nil(@user.profile.dislikes)}" %></p>
+	<p><%= "Age: #{unknown_if_nil(@user.profile.age)}" %></p>
+<% end %>
