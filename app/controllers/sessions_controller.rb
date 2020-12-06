@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     else
       @user = User.find_or_create_by_auth_hash(auth_hash)
     end
-    session[:id] = @user.id
+    session[:id] = @user&.id
     return redirect_to user_path(@user) if @user
 
     redirect_to root_path
