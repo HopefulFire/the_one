@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     return render 'edit' unless @user.update(user_params)
 
-    @user.update(uid: SecureRandom.hex, provider: 'none') unless @user.provider == 'none'
+    @user.update(uid: @user.id, provider: 'none') unless @user.provider == 'none'
     redirect_to user_path(@user)
   end
 
