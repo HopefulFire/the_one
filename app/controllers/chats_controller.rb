@@ -9,7 +9,7 @@ class ChatsController < ApplicationController
 
   def verify_session_and_find_user
     redirect_to root_path unless session[:id]
-    @user = current_user
+    @user = User.find(session[:id])
     redirect_to root_path unless @user.profile
   end
 end
