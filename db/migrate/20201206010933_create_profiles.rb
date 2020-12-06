@@ -8,6 +8,7 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.text :bio
       t.text :likes
       t.text :dislikes
+      t.integer :age
       t.integer :user_id
 
       t.timestamps
