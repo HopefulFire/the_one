@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
 
     else
       @user = User.find_or_create_by_auth_hash(auth_hash)
-      @user.update(password: SecureRandom.hex)
     end
     session[:id] = @user&.id
     return redirect_to user_path(@user) if @user

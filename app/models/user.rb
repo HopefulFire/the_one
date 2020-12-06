@@ -7,7 +7,7 @@ class User < ApplicationRecord
   def self.find_or_create_by_auth_hash(auth_hash)
     info = auth_hash[:info]
     user = User.find_or_create_by(email: info[:email])
-    user.update(uid: auth_hash[:uid], provider: auth_hash[:provider])
+    user.update(uid: auth_hash[:uid], provider: auth_hash[:provider], password: SecureRandom.hex)
     user
   end
 end
