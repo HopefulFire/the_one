@@ -3,7 +3,7 @@
 	<p><%= "Provider: #{@user.provider}" %></p>
 	<p><%= "UID: #{@user.uid}" %></p>
 	<%= link_to 'Edit User Credentials', edit_user_path %>
-	<%= link_to 'Edit User Profile', user_profile_edit_path(current_user) %>
+	|<%= link_to 'Edit User Profile', user_profile_edit_path(current_user) %>
 <% end %>
 <% if @user.profile %>
 	<h2><%= "Nickname: #{@user.profile.nickname}" %></h2>

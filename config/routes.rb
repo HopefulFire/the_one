@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get '/auth/:provider/callback', to: 'sessions#create'
   resources :sessions, only: %i[new create destroy]
+  resources :chats, only: %i[index show update destroy]
   resources :users do
     get '/profile/edit', to: 'profiles#edit'
     patch '/profile', to: 'profiles#update'

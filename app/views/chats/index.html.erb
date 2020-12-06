@@ -1,0 +1,10 @@
+<h1>Current Chats:</h1>
+<ul>
+	<% @chat_users.each do |user| %>
+		<li>
+			<h3><%= user.profile.nickname %></h3>
+			<p><%= link_to 'Profile', user_path(@user) %></p>
+			<p><%= link_to 'Message', chat_path(@user) %></p>
+		</li>
+	<% end %>
+</ul>
