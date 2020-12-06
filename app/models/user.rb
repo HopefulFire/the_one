@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :sent_messages, class_name: :Message, foreign_key: :sender_id, inverse_of: :sender
   has_many :received_messages, class_name: :Message, foreign_key: :reciever_id, inverse_of: :receiver
-  has_many :sent_users, class_name: :User,
+  has_many :sent_users, class_name: :User, foreign_key: :reciever_id, source:
   has_one :profile, dependent: :destroy, inverse_of: :user
   has_secure_password
 
