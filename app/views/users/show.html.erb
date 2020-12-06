@@ -1,3 +1,4 @@
 <h1><%= @user.email %></h1>
 <p><%= "Provider: #{@user.provider}" %></p>
 <p><%= "UID: #{@user.uid}" %></p>
+<%= link_to 'Edit User Credentials', edit_user_path %>
