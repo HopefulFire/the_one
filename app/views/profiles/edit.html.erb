@@ -1,0 +1,29 @@
+<h1>Edit Profile</h1>
+
+<%= form_with model: @profile do |profile| %>
+	<%= profile.label :nickname %>
+	<%= profile.text_field :nickname %>
+	<br>
+	<%= profile.label :first_name, 'First Name' %>
+	<%= profile.text_field :first_name %>
+	<br>
+	<%= profile.label :middle_name, 'Middle Name' %>
+	<%= profile.text_field :middle_name %>
+	<br>
+	<%= profile.label :last_name, 'Last Name' %>
+	<%= profile.text_field :last_name %>
+	<br>
+	<%= profile.label :bio %>
+	<%= profile.text_area :bio %>
+	<br>
+	<%= profile.label :likes %>
+	<%= profile.text_area :likes %>
+	<br>
+	<%= profile.label :dislikes %>
+	<%= profile.text_area :dislikes %>
+	<br>
+	<%= profile.label :age %>
+	<%= profile.number_field :age %>
+	<br>
+	<%= profile.submit %>
+<% end %>

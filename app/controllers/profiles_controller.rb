@@ -28,7 +28,9 @@ class ProfilesController < ApplicationController
 
   def find_user_and_profile
     @user = User.find(params[:user_id])
-    @profile = Profile.find_or_create_by(user_id: @user.id)
+    @profile = Profile.find_or_create_by(user_id: @user.id) do |profile|
+      profile.nickname = 'Unknown'
+    end
   end
 
   def verify_user

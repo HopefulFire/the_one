@@ -4,6 +4,6 @@ module SessionsHelper
   end
 
   def current_user
-    User.find(session[:id])
+    User.find_by(id: session[:id])
   end
 end
