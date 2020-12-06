@@ -1,6 +1,7 @@
 <h1>Use a third party authenticator:</h1>
 <nav>
 	<%= button_to 'Github', '/auth/github' %>
+	<%= button_to 'Google', '/auth/google_oauth2' %>
 </nav>
 <h2>Or sign in below:</h2>
 <%= form_with url: sessions_path do |login| %>
