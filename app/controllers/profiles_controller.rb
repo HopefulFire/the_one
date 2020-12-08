@@ -34,6 +34,6 @@ class ProfilesController < ApplicationController
   end
 
   def verify_user
-    redirect_to root_path unless @user == current_user
+    redirect_to root_path unless @user.id == session[:id]
   end
 end

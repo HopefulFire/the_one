@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     get '/profile/edit', to: 'profiles#edit'
     patch '/profile', to: 'profiles#update'
   end
+  get '/pages/privacy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
