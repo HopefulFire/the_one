@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[new create destroy]
   resources :chats, only: %i[index show update destroy]
   resources :users do
+    resources :messages, only: %i[index]
     get '/profile/edit', to: 'profiles#edit'
     patch '/profile', to: 'profiles#update'
   end
