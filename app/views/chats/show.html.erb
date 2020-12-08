@@ -1,0 +1,17 @@
+<div class="col">
+	<div class='chat'>
+		<% @messages.each do |message| %>
+			<p><%= "#{message.body} - #{message.sender.profile.nickname}" %><p>
+		<% end %>
+	</div>
+	<%= form_with model: @new_message, url: chat_path(@chat_user), method: 'PATCH' do |message| %>
+		<%= message.hidden_field :sender_id %>
+		<%= message.hidden_field :receiver_id %>
+		<div class="input-group mb-3">
+			<%= message.text_field :body, class: 'chat-input' %>
+		</div>
+		<div class="input-group-append">
+			<%= message.submit 'Send', class: 'btn btn-primary chat-input' %>
+		</div>
+	<% end %>
+</div>

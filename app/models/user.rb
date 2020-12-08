@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy, inverse_of: :user
   has_secure_password
 
+  validates :email, :provider, :uid, presence: true
   validates :email, uniqueness: true, format: { with: /\A[\w.]+@\w+\.\w+\z/i }
 
   def self.find_or_create_by_auth_hash(auth_hash)

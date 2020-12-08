@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :confirm_user, only: %i[edit update destroy]
 
   def index
-    @users = User.all
+    @users = User.joins(:profile).order(nickname: :asc)
   end
 
   def show; end

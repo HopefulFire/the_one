@@ -4,13 +4,19 @@
     <title>TheOne</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <%= render 'shared/navbar' %>
+          <div class="my-3">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
