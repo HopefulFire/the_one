@@ -1,0 +1,5 @@
+<div class='chat'>
+	<% messages.each do |message| %>
+		<p><%= "#{message.body} - #{message.sender.profile.nickname}" %><p>
+	<% end %>
+</div>
