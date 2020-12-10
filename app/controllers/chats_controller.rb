@@ -18,7 +18,7 @@ class ChatsController < ApplicationController
   end
 
   def update
-    message = Message.create(message_params)
+    Message.create(message_params)
     redirect_to chat_path(params[:id])
   end
 
