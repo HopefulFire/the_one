@@ -5,6 +5,7 @@
 		<p><%= "UID: #{@user.uid}" %></p>
 		<%= link_to 'Edit User Credentials', edit_user_path %>
 		| <%= link_to 'Edit User Profile', user_profile_edit_path(current_user) %>
+		| <%= link_to 'View All Messages', user_messages_path(current_user) %>
 	<% else %>
 		<%= link_to 'Chat with this user', chat_path(@user) %>
 	<% end %>
