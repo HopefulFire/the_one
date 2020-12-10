@@ -7,3 +7,12 @@ My first rails application. This is a simple chat application.
 git clone https://github.com/HopefulFire/the_one.git
 bundle
 ```
+
+## To run:
+
+```
+rails s
+```
+Go to `localhost:3000`
+
+Done.
