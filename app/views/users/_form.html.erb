@@ -1,9 +1,11 @@
-<ul>
-	<% user.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-	<% end %>
-</ul>
 <%= form_with model: user, local: true do |user| %>
+	<% if user.object.errors %>
+		<ul>
+			<% user.object.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
 	<%= user.label :email %>
 	<%= user.email_field :email %>
 	<br>
