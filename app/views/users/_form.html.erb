@@ -1,9 +1,9 @@
 <ul>
 	<% user.errors.full_messages.each do |message| %>
-		<li><%= p message %></li>
+		<li><%= message %></li>
 	<% end %>
 </ul>
-<%= form_with model: user do |user| %>
+<%= form_with model: user, local: true do |user| %>
 	<%= user.label :email %>
 	<%= user.email_field :email %>
 	<br>

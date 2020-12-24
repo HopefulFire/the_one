@@ -33,6 +33,8 @@ class User < ApplicationRecord
   validates :email, :provider, :uid, presence: true
   validates :email, uniqueness: true, format: { with: /\A[\w.]+@\w+\.\w+\z/i }
 
+  scope :with_profile, -> { joins(:profile).order(nickname: :asc) }
+
   def self.find_or_create_by_auth_hash(auth_hash)
     info = auth_hash[:info]
     user = User.find_or_create_by(email: info[:email])
