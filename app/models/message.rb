@@ -9,4 +9,14 @@ class Message < ApplicationRecord
       user.id
     ).order(created_at: :desc)
   end
+
+  scope :chat ->(user, chat_user) do
+  	where(
+      'sender_id = ? AND receiver_id = ? OR sender_id = ? AND receiver_id = ?',
+      user.id,
+      chat_user.id,
+      chat_user.id,
+      user.id
+    ).order(created_at: :desc).limit(50).reverse
+  end
 end

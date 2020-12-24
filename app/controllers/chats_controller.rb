@@ -7,13 +7,7 @@ class ChatsController < ApplicationController
 
   def show
     @chat_user = User.find_by(id: params[:id])
-    @messages = Message.where(
-      'sender_id = ? AND receiver_id = ? OR sender_id = ? AND receiver_id = ?',
-      @user.id,
-      @chat_user.id,
-      @chat_user.id,
-      @user.id
-    ).order(created_at: :desc).limit(50).reverse
+    @messages = Message.chat(@user, @chat_user)
     @new_message = Message.new(sender: @user, receiver: @chat_user)
   end
 
