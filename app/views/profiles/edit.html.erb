@@ -1,6 +1,15 @@
 <h1>Edit Profile</h1>
 
-<%= form_with model: @profile, url: user_profile_path(@profile.user) do |profile| %>
+<%= form_with model: @profile, url: user_profile_path(@profile.user), local: true do |profile| %>
+	<% if profile.object.errors.any? %>
+		<ul>
+			<% profile.object.errors.full_messages.each do |message| %>
+				<li>
+					<%= message %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
 	<%= profile.label :nickname %>
 	<%= profile.text_field :nickname %>
 	<br>

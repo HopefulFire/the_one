@@ -1,5 +1,5 @@
 <%= form_with model: user, local: true do |user| %>
-	<% if user.object.errors %>
+	<% if user.object.errors.any? %>
 		<ul>
 			<% user.object.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
