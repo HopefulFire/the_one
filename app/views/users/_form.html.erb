@@ -1,11 +1,5 @@
 <%= form_with model: user, local: true do |user| %>
-	<% if user.object.errors.any? %>
-		<ul>
-			<% user.object.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-		</ul>
-	<% end %>
+	<%= render partial: 'shared/error', locals: { object: user.object } %>
 	<%= user.label :email %>
 	<%= user.email_field :email %>
 	<br>
